@@ -16,19 +16,25 @@ npm run preview   # preview production build
 
 ## Architecture
 
-This is a single-page React app with no routing, no state management library, and no component splitting. All logic lives in one file:
+Single-page React app with no routing and no state management library. The `transactions` array is the only shared state, held in `App.jsx` and passed down as props.
 
-- **`src/App.jsx`** — the entire app: state, derived values (totals, balance, filtered list), form handling, and JSX. Intentionally monolithic as a course starting point.
-- **`src/App.css`** — plain CSS, no modules or utility framework. Class names map directly to elements in `App.jsx`.
+### Components
+
+- **`src/App.jsx`** — root component; owns the `transactions` state and `handleAddTransaction` callback. Composes the three child components.
+- **`src/Summary.jsx`** — receives `transactions`, computes `totalIncome`, `totalExpenses`, and `balance` internally, renders the three summary cards.
+- **`src/TransactionForm.jsx`** — owns its own form state (description, amount, type, category); calls `onAddTransaction` prop with a new transaction object on submit.
+- **`src/TransactionList.jsx`** — receives `transactions`, owns filter state (filterType, filterCategory) internally, renders the filtered table.
+- **`src/App.css`** — plain CSS, no modules or utility framework. Class names map directly to JSX elements.
 - **`src/index.css`** — global resets/defaults.
+
+The `categories` array is defined locally in each component that needs it (`TransactionForm`, `TransactionList`) rather than passed as a prop.
 
 ### Data model
 
 Each transaction object: `{ id, description, amount, type, category, date }`.  
-`type` is `"income"` or `"expense"`. `category` is one of `["food", "housing", "utilities", "transport", "entertainment", "salary", "other"]`.
+`amount` is a number. `type` is `"income"` or `"expense"`. `category` is one of `["food", "housing", "utilities", "transport", "entertainment", "salary", "other"]`.
 
 ### Known intentional issues (course exercises)
 
-- **Bug:** `amount` is stored as a string. The `.reduce` for totals does string concatenation instead of numeric addition — balance and totals are wrong.
-- **Messy code:** everything in one component; no deletion UI despite `.delete-btn` CSS existing; "Freelance Work" seed data is typed `"expense"` but categorized `"salary"`.
+- **Messy code:** no deletion UI despite `.delete-btn` CSS existing; "Freelance Work" seed data is typed `"expense"` but categorized `"salary"`.
 - **Poor UI:** no styling polish, no feedback on form submit, no empty-state handling.

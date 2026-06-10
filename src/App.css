@@ -21,9 +21,22 @@ h1 {
 
 .summary-card {
   flex: 1;
-  border: 1px solid #ddd;
+  border: none;
   padding: 14px;
-  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.summary-card:nth-child(1) {
+  background: #e8f5e9;
+}
+
+.summary-card:nth-child(2) {
+  background: #fce4ec;
+}
+
+.summary-card:nth-child(3) {
+  background: #e3f2fd;
 }
 
 .summary-card h3 {
@@ -50,10 +63,12 @@ h1 {
 }
 
 .add-transaction {
-  border: 1px solid #ddd;
+  border: none;
   padding: 16px;
   margin-bottom: 24px;
-  background: #fff;
+  background: #dbeafe;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .add-transaction h2 {
@@ -72,6 +87,7 @@ form select {
   padding: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  background: #e8f0fe;
 }
 
 form input[type="text"] {
@@ -88,11 +104,12 @@ form select {
 
 form button {
   padding: 8px 20px;
-  background: #333;
+  background: #1976d2;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 14px;
+  border-radius: 4px;
 }
 
 .transactions {
@@ -114,6 +131,13 @@ form button {
   padding: 6px;
   border: 1px solid #ccc;
   font-size: 13px;
+  background: #e8f0fe;
+}
+
+.table-wrapper {
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 table {
@@ -122,7 +146,11 @@ table {
 }
 
 thead {
-  background: #f5f5f5;
+  background: #1565c0;
+}
+
+tbody {
+  background: #e3f2fd;
 }
 
 th, td {
@@ -134,15 +162,17 @@ th, td {
 
 th {
   font-size: 12px;
-  color: #888;
+  color: #fff;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .delete-btn {
   padding: 4px 10px;
-  background: #eee;
-  border: 1px solid #ccc;
+  background: #e53935;
+  border: none;
   cursor: pointer;
   font-size: 12px;
-  color: #333;
+  color: #fff;
+  border-radius: 4px;
 }

@@ -31,6 +31,7 @@ function TransactionList({ transactions, onDeleteTransaction }) {
         </select>
       </div>
 
+      <div className="table-wrapper">
       <table>
         <thead>
           <tr>
@@ -65,6 +66,7 @@ function TransactionList({ transactions, onDeleteTransaction }) {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }
